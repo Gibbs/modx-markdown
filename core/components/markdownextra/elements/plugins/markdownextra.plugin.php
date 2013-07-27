@@ -22,34 +22,23 @@
  * @author     Dan Gibbs  
  */
 
-require_once $modx->getOption('core_path') . 'components/markdownextra/vendor/markdown/Markdown.php';
-
 if($modx->context->key !== 'mgr' AND $modx->event->name == 'OnParseDocument')
 {
 	require_once $modx->getOption('core_path') . 'components/markdownextra/vendor/markdown/Markdown.php';
+	require_once $modx->getOption('core_path') . 'components/markdownextra/vendor/markdown/MarkdownExtra.php';
+	
 	$enabled  = $modx->getOption('markdownextra.enabled');
-	$mime_in  = $modx->getOption('markdownextra.mime_markdown');
-	$mime_out = $modx->getOption('markdownextra.mime_out');
+	$mime_in  = $modx->getOption('markdownextra.mimemarkdown');
+	$mime_out = $modx->getOption('markdownextra.mimeout');
 
 	if($modx->resource->get('contentType') !== $mime_in OR !$enabled) return NULL;
 
 	$output = NULL;
-	$id = $modx->resource->id;
-	$cacheable = $modx->resource->get('cacheable');
 
-	if($cacheable) {
-		$cache_opts = array(xPDO::OPT_CACHE_KEY => 'includes/elements/markdown');
-		$output = $modx->cacheManager->get($id, $cache);
-	}
-	
-	if( empty($output) ) {
-		$markdown = new Markdown();
-		$output = $markdown::defaultTransform($modx->resource->getContent());
-
-		if($cacheable)
-			$modx->cacheManager->set($id, $output, 0, $cache_opts);
-	}
+	$markdown = new MarkdownExtra();
+	$output = $markdown::defaultTransform($modx->resource->getContent());
 
 	$modx->resource->setContent($output);
 	$modx->response->contentType->_fields['mime_type'] = $mime_out;
 }
+

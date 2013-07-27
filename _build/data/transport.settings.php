@@ -35,4 +35,24 @@ $systemSettings[1]->fromArray(array (
   'value' => 1,
   'area' => 'Plugin',
 ), '', true, true);
+$systemSettings[2] = $modx->newObject('modSystemSetting');
+$systemSettings[2]->fromArray(array (
+  'key' => 'markdownextra.mimemarkdown',
+  'name' => 'Markdown MIME Type',
+  'description' => 'The Markdown MIME type set for the MODX Content Type',
+  'namespace' => 'markdownextra',
+  'xtype' => 'textfield',
+  'value' => 'text/markdown',
+  'area' => 'System and Server',
+), '', true, true);
+$systemSettings[3] = $modx->newObject('modSystemSetting');
+$systemSettings[3]->fromArray(array (
+  'key' => 'markdownextra.mimeout',
+  'name' => 'Output MIME Type',
+  'description' => 'The MIME type to output for Markdown related documents.',
+  'namespace' => 'markdownextra',
+  'xtype' => 'textfield',
+  'value' => 'text/html',
+  'area' => 'System and Server',
+), '', true, true);
 return $systemSettings;

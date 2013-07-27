@@ -71,13 +71,7 @@ if ($object->xpdo) {
             $intersects = array (
                 0 =>  array (
                   'pluginid' => 'MarkdownExtra',
-                  'event' => 'OnWebPageInit',
-                  'priority' => '0',
-                  'propertyset' => '0',
-                ),
-                1 =>  array (
-                  'pluginid' => 'MarkdownExtra',
-                  'event' => 'OnWebPagePrerender',
+                  'event' => 'OnParseDocument',
                   'priority' => '0',
                   'propertyset' => '0',
                 ),

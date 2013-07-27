@@ -31,6 +31,23 @@ if ($object->xpdo) {
     switch ($options[xPDOTransport::PACKAGE_ACTION]) {
         case xPDOTransport::ACTION_INSTALL:
         	
+			// Check a MIME type exists
+			$markdown_mime = $modx->getObject('modContentType', array('mime_type' => 'text/markdown'));
+
+			if(!$markdown_mime) {
+				$modx->log(xPDO::LOG_LEVEL_INFO, 'Creating Markdown Content Type');
+				$content_type = $modx->newObject('modContentType', array(
+					'name'            => 'Markdown',
+					'description'     => 'Markdown content',
+					'mime_type'       => 'text/markdown',
+					'file_extensions' => NULL,
+					'headers'         => NULL,
+					'binary'          => '0',
+				));
+	
+				$content_type->save();
+			}
+
         	break;
         case xPDOTransport::ACTION_UPGRADE:
             /* [[+code]] */

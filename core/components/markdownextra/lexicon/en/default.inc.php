@@ -34,3 +34,12 @@
  * @package markdownextra
  **/
 
+
+
+/* Used in transport.settings.php */
+$_lang['setting_markdownextra.mimemarkdown'] = 'Markdown MIME Type';
+$_lang['setting_markdownextra.mimemarkdown_desc'] = 'The Markdown MIME type set for the MODX Content Type';
+$_lang['setting_markdownextra.mimeout'] = 'Output MIME Type';
+$_lang['setting_markdownextra.mimeout_desc'] = 'The MIME type to output for Markdown related documents.';
+$_lang['setting_markdownextra.enabled'] = 'Enabled';
+$_lang['setting_markdownextra.enabled_desc'] = 'Enable Markdown';
