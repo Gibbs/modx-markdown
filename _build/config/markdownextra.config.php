@@ -65,6 +65,24 @@ $components = array(
             'value' => 1,
             'area' => 'Plugin',
         ),
+        'setting_markdownextra.mimemarkdown' => array( // key
+            'key' => 'markdownextra.mimemarkdown',
+            'name' => 'Markdown MIME Type',
+            'description' => 'The Markdown MIME type set for the MODX Content Type',
+            'namespace' => 'markdownextra',
+            'xtype' => 'textfield',
+            'value' => 'text/markdown',
+            'area' => 'System and Server',
+        ),
+        'setting_markdownextra.mimeout' => array( // key
+            'key' => 'markdownextra.mimeout',
+            'name' => 'Output MIME Type',
+            'description' => 'The MIME type to output for Markdown related documents.',
+            'namespace' => 'markdownextra',
+            'xtype' => 'textfield',
+            'value' => 'text/html',
+            'area' => 'System and Server',
+        ),
     ),
 
     /* ************************ NEW SYSTEM EVENTS ************************* */
@@ -160,6 +178,14 @@ $components = array(
         ),
 
         'snippets' => array(
+        	'MarkdownExtra' => array(
+                'category' => 'MarkdownExtra',
+                'description' => 'MarkdownExtra snippet and output filter.',
+                'static' => true,
+                'propertySets' => array(
+                	'MarkdownExtra',
+             ),
+           ),
         ),
         'plugins' => array(
             'MarkdownExtra' => array( /* markdownextra with static, events, and property sets */
@@ -171,8 +197,10 @@ $components = array(
                 ),
                 'events' => array(
                     /* minimal markdownextra - no fields */
-                    'OnWebPageInit' => array(),
+                    'OnDocFormRender' => array(),
+                    'OnBeforeDocFormSave' => array(),
                     'OnWebPagePrerender' => array(),
+                    //'OnWebPagePrerender' => array(),
                     /* markdownextra with fields set */
                    /* 'OnMyEvent1' => array(
                         'priority' => '0', 
@@ -288,6 +316,7 @@ $components = array(
      * Suffix 'resolver.php' will be added automatically */
     'resolvers' => array(
         'default',
+        'markdownextra',
         //'addUsers'
     ),
 
@@ -340,7 +369,8 @@ $components = array(
      *
      * Set to array() if there are no classes. */
     'classes' => array(
-        'MarkdownExtra' => 'markdownextra:markdownextra',
+        'markdownextra' => 'markdownextra:markdownextra'
+        //'MarkdownExtra' => 'markdownextra:markdownextra',
     ),
 
     /* ************************************

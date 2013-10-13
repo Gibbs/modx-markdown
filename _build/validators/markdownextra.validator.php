@@ -3,7 +3,7 @@
  * Validator for MarkdownExtra extra
  *
  * Copyright Gold Coast Media 2013 by Dan Gibbs <dan@goldcoastmedia.co.uk>
- * Created on 07-27-2013
+ * Created on 10-13-2013
  *
  * MarkdownExtra is free software; you can redistribute it and/or modify it under the
  * terms of the GNU General Public License as published by the Free Software
@@ -29,10 +29,6 @@ if ($object->xpdo) {
     $modx =& $object->xpdo;
     switch ($options[xPDOTransport::PACKAGE_ACTION]) {
         case xPDOTransport::ACTION_INSTALL:
-        	if (version_compare(phpversion(), '5.3', '<')) {
-        		$modx->log(xPDO::LOG_LEVEL_INFO, 'PHP version must be at least 5.3');
-        		return FALSE;
-        	}
             /* return false if conditions are not met */
 
             /* [[+code]] */

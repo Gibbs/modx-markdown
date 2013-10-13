@@ -50,10 +50,9 @@ if ($object->xpdo) {
 
 			// Model
 			$modx =& $object->xpdo;
-            $model_path = $modx->getOption('core_path') . 'components/markdownextra/model/';
-            $modx->addPackage('markdownextra',$model_path);
+            $modx->addPackage('markdownextra', MODX_CORE_PATH . 'components/markdownextra/model/');
             $manager = $modx->getManager();
-            $manager->createObjectContainer('Markdownextra');
+            $manager->createObjectContainer('modMarkdownextra');
 
         	break;
         case xPDOTransport::ACTION_UPGRADE:
