@@ -22,22 +22,73 @@
  * @author     Dan Gibbs  
  */
 
-if($modx->context->key !== 'mgr' AND $modx->event->name == 'OnParseDocument')
+//ini_set('display_errors', 'on'); error_reporting(E_ALL);
+//$modx->setLogLevel(modX::LOG_LEVEL_DEBUG);
+
+// Plugin events
+$events = array(
+	'OnDocFormRender',
+	'OnBeforeDocFormSave',
+	'OnWebPagePrerender',
+);
+
+if( !in_array($modx->event->name, $events) )
+	return NULL;
+
+$mime_in  = $modx->getOption('markdownextra.mimemarkdown');
+$mime_out = $modx->getOption('markdownextra.mimeout');
+
+$modx->addPackage('markdownextra', MODX_CORE_PATH . 'components/markdownextra/model/');
+require_once $modx->getOption('core_path') . 'components/markdownextra/vendor/markdown/Markdown.php';
+require_once $modx->getOption('core_path') . 'components/markdownextra/vendor/markdown/MarkdownExtra.php';
+
+/**
+ * OnBeforeDocFormSave
+ */
+if($modx->event->name == 'OnBeforeDocFormSave' AND $resource->contentType == $mime_in)
 {
-	require_once $modx->getOption('core_path') . 'components/markdownextra/vendor/markdown/Markdown.php';
-	require_once $modx->getOption('core_path') . 'components/markdownextra/vendor/markdown/MarkdownExtra.php';
+	// Save the Markdown
+	$md = $modx->getObject('modMarkdownextra', array('document' => $id));
 
-	$enabled  = $modx->getOption('markdownextra.enabled');
-	$mime_in  = $modx->getOption('markdownextra.mimemarkdown');
-	$mime_out = $modx->getOption('markdownextra.mimeout');
+	if(!$md) {
+		$md = $modx->newObject('modMarkdownextra', array(
+			'document' => $id,
+			'content' => $resource->getContent(),
+		));
+	}
 
-	if($modx->resource->get('contentType') !== $mime_in OR !$enabled) return NULL;
+	$md->set('document', $id);
+	$md->set('content', $resource->getContent());
+	$md->save();
 
-	$output = NULL;
-
+	// Set document output to parsed Markdown
 	$markdown = new MarkdownExtra();
-	$output = $markdown::defaultTransform($modx->resource->getContent());
+	$output = $markdown::defaultTransform($resource->getContent());
 
-	$modx->resource->setContent($output);
-	$modx->response->contentType->_fields['mime_type'] = $mime_out;
+	$resource->content = $output;
+}
+
+/**
+ * OnDocFormRender
+ */
+if($modx->event->name == 'OnDocFormRender' AND $resource->contentType == $mime_in)
+{
+	// Load document Markdown
+	$md = $modx->getObject('modMarkdownextra', array('document' => $id));
+
+	if($md) {
+		$resource->content = $md->get('content');
+	}
+}
+
+/**
+ * OnWebPagePrerender
+ *
+ * FIXME: A more efficient approach
+ */
+
+if($modx->event->name == 'OnWebPagePrerender' AND $mime_in !== $mime_out)
+{
+	// Change content type
+	$modx->resource->ContentType->set('mime_type', $mime_out);
 }

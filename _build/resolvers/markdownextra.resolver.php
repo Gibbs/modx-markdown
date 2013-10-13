@@ -48,6 +48,13 @@ if ($object->xpdo) {
 				$content_type->save();
 			}
 
+			// Model
+			$modx =& $object->xpdo;
+            $model_path = $modx->getOption('core_path') . 'components/markdownextra/model/';
+            $modx->addPackage('markdownextra',$model_path);
+            $manager = $modx->getManager();
+            $manager->createObjectContainer('Markdownextra');
+
         	break;
         case xPDOTransport::ACTION_UPGRADE:
             /* [[+code]] */

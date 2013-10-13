@@ -21,30 +21,21 @@
  * @package markdownextra
  */
 
-// Output filter
-if( isset($input) ) {
+$output  = NULL; $content = NULL;
 
+if( isset($input) ) 
+	$content = $input;
+
+if( array_change_key_case($scriptProperties, CASE_LOWER) AND isset($scriptProperties['content']) )
+	$content = $scriptProperties['content'];
+
+if( $content !== NULL )
+{
 	require_once $modx->getOption('core_path') . 'components/markdownextra/vendor/markdown/Markdown.php';
 	require_once $modx->getOption('core_path') . 'components/markdownextra/vendor/markdown/MarkdownExtra.php';
 	
-	$output = NULL;
 	$markdown = new MarkdownExtra();
-	$output = $markdown::defaultTransform($input);
-	
-	return $output;
+	$output = $markdown::defaultTransform($content);
 }
-
-// Snippet
-if( array_change_key_case($scriptProperties, CASE_LOWER) AND isset($scriptProperties['content']) ) {
-
-	require_once $modx->getOption('core_path') . 'components/markdownextra/vendor/markdown/Markdown.php';
-	require_once $modx->getOption('core_path') . 'components/markdownextra/vendor/markdown/MarkdownExtra.php';
 	
-	$output = NULL;
-	$markdown = new MarkdownExtra();
-	$output = $markdown::defaultTransform($scriptProperties['content']);
-	
-	return $output;
-}
-
-return NULL;
+return $output;
