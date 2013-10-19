@@ -3,7 +3,7 @@
  * Validator for MarkdownExtra extra
  *
  * Copyright Gold Coast Media 2013 by Dan Gibbs <dan@goldcoastmedia.co.uk>
- * Created on 10-13-2013
+ * Created on 10-19-2013
  *
  * MarkdownExtra is free software; you can redistribute it and/or modify it under the
  * terms of the GNU General Public License as published by the Free Software

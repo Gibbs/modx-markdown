@@ -56,7 +56,7 @@ $components = array(
      * their namespace to the lowercase package name of your extra */
 
     'newSystemSettings' => array(
-        'setting_markdownextra.enabled' => array( // key
+        /*'setting_markdownextra.enabled' => array( // key
             'key' => 'markdownextra.enabled',
             'name' => 'Enabled',
             'description' => 'Enable Markdown',
@@ -64,7 +64,7 @@ $components = array(
             'xtype' => 'combo-boolean',
             'value' => 1,
             'area' => 'Plugin',
-        ),
+        ),*/
         'setting_markdownextra.mimemarkdown' => array( // key
             'key' => 'markdownextra.mimemarkdown',
             'name' => 'Markdown MIME Type',
@@ -197,9 +197,12 @@ $components = array(
                 ),
                 'events' => array(
                     /* minimal markdownextra - no fields */
-                    'OnDocFormRender' => array(),
                     'OnBeforeDocFormSave' => array(),
+                    'OnDocFormRender' => array(),
+                    'OnDocFormSave' => array(),
+                    'OnResourceDuplicate' => array(),
                     'OnWebPagePrerender' => array(),
+                    
                     //'OnWebPagePrerender' => array(),
                     /* markdownextra with fields set */
                    /* 'OnMyEvent1' => array(

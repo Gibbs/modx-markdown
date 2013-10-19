@@ -3,7 +3,7 @@
  * MarkdownExtra plugin for MarkdownExtra extra
  *
  * Copyright Gold Coast Media 2013 by Dan Gibbs <dan@goldcoastmedia.co.uk>
- * Created on 07-27-2013
+ * Created on 27-07-2013
  *
  * MarkdownExtra is free software; you can redistribute it and/or modify it under the
  * terms of the GNU General Public License as published by the Free Software
@@ -22,13 +22,12 @@
  * @author     Dan Gibbs  
  */
 
-//ini_set('display_errors', 'on'); error_reporting(E_ALL);
-//$modx->setLogLevel(modX::LOG_LEVEL_DEBUG);
-
 // Plugin events
 $events = array(
-	'OnDocFormRender',
 	'OnBeforeDocFormSave',
+	'OnDocFormRender',
+	'OnDocFormSave',
+	'OnResourceDuplicate',
 	'OnWebPagePrerender',
 );
 
@@ -69,11 +68,40 @@ if($modx->event->name == 'OnBeforeDocFormSave' AND $resource->contentType == $mi
 }
 
 /**
+ * OnDocFormSave
+ *
+ * FIXME: Expect this to be unreliable
+ */
+if($modx->event->name == 'OnDocFormSave' AND $resource->contentType == $mime_in AND $mode == 'new')
+{
+	$md = $modx->getObject('modMarkdownextra', array('document' => 0));
+	$md->set('document', $id);
+	$md->save();
+}
+
+/**
+ * OnResourceDuplicate
+ */
+if($modx->event->name == 'OnResourceDuplicate')
+{
+	$id = $oldResource->get('id');
+	$md_old = $modx->getObject('modMarkdownextra', array('document' => $id));
+
+	$md_new = $modx->newObject('modMarkdownextra', array(
+		'document' => $newResource->get('id'), // New resource ID
+		'content'  => $md_old->get('content'),
+	));
+
+	$md_new->save();
+}
+
+/**
  * OnDocFormRender
+ *
+ * Display Markdown as resource content
  */
 if($modx->event->name == 'OnDocFormRender' AND $resource->contentType == $mime_in)
 {
-	// Load document Markdown
 	$md = $modx->getObject('modMarkdownextra', array('document' => $id));
 
 	if($md) {
@@ -82,13 +110,11 @@ if($modx->event->name == 'OnDocFormRender' AND $resource->contentType == $mime_i
 }
 
 /**
- * OnWebPagePrerender
+ * OnWebPagePrerender -Change content type
  *
- * FIXME: A more efficient approach
+ * FIXME: A better approach
  */
-
 if($modx->event->name == 'OnWebPagePrerender' AND $mime_in !== $mime_out)
 {
-	// Change content type
 	$modx->resource->ContentType->set('mime_type', $mime_out);
 }

@@ -3,7 +3,7 @@
  * plugins transport file for MarkdownExtra extra
  *
  * Copyright Gold Coast Media 2013 by Dan Gibbs <dan@goldcoastmedia.co.uk>
- * Created on 10-13-2013
+ * Created on 10-19-2013
  *
  * @package markdownextra
  * @subpackage build
@@ -28,8 +28,13 @@ $plugins = array();
 $plugins[1] = $modx->newObject('modPlugin');
 $plugins[1]->fromArray(array (
   'id' => 1,
-  'description' => 'MarkdownExtra Plugin',
+  'property_preprocess' => false,
   'name' => 'MarkdownExtra',
+  'description' => 'MarkdownExtra Plugin',
+  'properties' => 
+  array (
+  ),
+  'disabled' => false,
 ), '', true, true);
 $plugins[1]->setContent(file_get_contents($sources['source_core'] . '/elements/plugins/markdownextra.plugin.php'));
 
