@@ -28,7 +28,7 @@ $events = array(
 	'OnDocFormRender',
 	'OnDocFormSave',
 	'OnResourceDuplicate',
-	'OnWebPagePrerender',
+	'OnLoadWebDocument',
 );
 
 if( !in_array($modx->event->name, $events) )
@@ -110,11 +110,11 @@ if($modx->event->name == 'OnDocFormRender' AND $resource->contentType == $mime_i
 }
 
 /**
- * OnWebPagePrerender -Change content type
+ * OnLoadWebDocument- Change content type
  *
  * FIXME: A better approach
  */
-if($modx->event->name == 'OnWebPagePrerender' AND $mime_in !== $mime_out)
+if($modx->event->name == 'OnLoadWebDocument' AND $mime_in !== $mime_out)
 {
 	$modx->resource->ContentType->set('mime_type', $mime_out);
 }

@@ -201,7 +201,7 @@ $components = array(
                     'OnDocFormRender' => array(),
                     'OnDocFormSave' => array(),
                     'OnResourceDuplicate' => array(),
-                    'OnWebPagePrerender' => array(),
+                    'OnLoadWebDocument' => array(),
                     
                     //'OnWebPagePrerender' => array(),
                     /* markdownextra with fields set */

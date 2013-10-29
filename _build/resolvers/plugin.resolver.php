@@ -3,7 +3,7 @@
 * Resolver to connect plugins to system events for MarkdownExtra extra
 *
 * Copyright Gold Coast Media 2013 by Dan Gibbs <dan@goldcoastmedia.co.uk>
-* Created on 10-19-2013
+* Created on 10-29-2013
 *
  * MarkdownExtra is free software; you can redistribute it and/or modify it under the
  * terms of the GNU General Public License as published by the Free Software
@@ -95,7 +95,7 @@ if ($object->xpdo) {
                 ),
                 4 =>  array (
                   'pluginid' => 'MarkdownExtra',
-                  'event' => 'OnWebPagePrerender',
+                  'event' => 'OnLoadWebDocument',
                   'priority' => '0',
                   'propertyset' => '0',
                 ),
