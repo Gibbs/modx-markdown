@@ -1,5 +1,6 @@
 Changelog for MarkdownExtra
+===========================
 
 MarkdownExtra 1.0.0
----------------------------------
-Initial Version
+-------------------
+- Initial Version

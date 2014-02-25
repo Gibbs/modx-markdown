@@ -1,14 +1,16 @@
+Markdown Extra
+==============
+Version: 1.0.0
+Authors:  Dan Gibbs <dan@goldcoastmedia.co.uk>
 
-MarkdownExtra
+Write MODX documents in Markdown.
+
+Git repo: https://github.com/GoldCoastMedia/modx-markdown-extra
 
 
-Author: Dan Gibbs <dan@goldcoastmedia.co.uk>
-Copyright Gold Coast Media 2013
+Documentation
+-------------
 
-Official Documentation: http://www.goldcoastmedia.co.uk/tools/modx/markdown-extra
+Full detailed documentation on using Markdown in MODX with this extension is 
+available at:
 
-Bugs and Feature Requests: https://github.com:GoldCoastMedia/modx-markdown-extra
-
-Questions: http://forums.modx.com
-
-Created by MyComponent
