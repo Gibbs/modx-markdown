@@ -42,11 +42,6 @@ $modx->addPackage(
 $mime_in  = $modx->getOption('markdownextra.mimemarkdown');
 $mime_out = $modx->getOption('markdownextra.mimeout');
 
-require_once $modx->getOption('core_path') . 
-	'components/markdownextra/vendor/MarkdownExtra/Markdown.php';
-require_once $modx->getOption('core_path') . 
-	'components/markdownextra/vendor/MarkdownExtra/MarkdownExtra.php';
-
 /**
  * OnBeforeDocFormSave
  */
@@ -67,6 +62,11 @@ if($modx->event->name == 'OnBeforeDocFormSave' AND $resource->contentType == $mi
 	$md->save();
 
 	// Set document output to parsed Markdown
+	require_once $modx->getOption('core_path') . 
+	'components/markdownextra/vendor/MarkdownExtra/Markdown.php';
+require_once $modx->getOption('core_path') . 
+	'components/markdownextra/vendor/MarkdownExtra/MarkdownExtra.php';
+
 	$markdown = new MarkdownExtra();
 	$output = $markdown::defaultTransform($resource->getContent());
 
