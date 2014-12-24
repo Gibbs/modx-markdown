@@ -9,27 +9,27 @@
 
 
 
-$packageNameLower = 'markdownextra'; /* No spaces, no dashes */
+$packageNameLower = 'markdown'; /* No spaces, no dashes */
 
 $components = array(
     /* These are used to define the package and set values for placeholders */
-    'packageName' => 'MarkdownExtra',  /* No spaces, no dashes */
+    'packageName' => 'Markdown',  /* No spaces, no dashes */
     'packageNameLower' => $packageNameLower,
-    'packageDescription' => 'MarkdownExtra for MODX resources.',
+    'packageDescription' => 'Markdown for MODX resources.',
     'version' => '1.0.0',
     'release' => 'beta1',
     'author' => 'Dan Gibbs',
     'email' => '<dan@goldcoastmedia.co.uk>',
     'authorUrl' => 'http://www.goldcoastmedia.co.uk/',
     'authorSiteName' => "Gold Coast Media",
-    'packageDocumentationUrl' => 'http://www.goldcoastmedia.co.uk/tools/modx/markdown-extra',
+    'packageDocumentationUrl' => 'http://www.goldcoastmedia.co.uk/tools/modx/markdown',
     'copyright' => 'Gold Coast Media 2013',
 
     /* no need to edit this except to change format */
     'createdon' => strftime('%m-%d-%Y'),
 
     'gitHubUsername' => 'GoldCoastMedia',
-    'gitHubRepository' => 'modx-markdown-extra',
+    'gitHubRepository' => 'modx-markdown',
 
     /* two-letter code of your primary language */
     'primaryLanguage' => 'en',
@@ -56,29 +56,29 @@ $components = array(
      * their namespace to the lowercase package name of your extra */
 
     'newSystemSettings' => array(
-        /*'setting_markdownextra.enabled' => array( // key
-            'key' => 'markdownextra.enabled',
+        /*'setting_markdown.enabled' => array( // key
+            'key' => 'markdown.enabled',
             'name' => 'Enabled',
             'description' => 'Enable Markdown',
-            'namespace' => 'markdownextra',
+            'namespace' => 'markdown',
             'xtype' => 'combo-boolean',
             'value' => 1,
             'area' => 'Plugin',
         ),*/
-        'setting_markdownextra.mimemarkdown' => array( // key
-            'key' => 'markdownextra.mimemarkdown',
+        'setting_markdown.mimemarkdown' => array( // key
+            'key' => 'markdown.mimemarkdown',
             'name' => 'Markdown MIME Type',
             'description' => 'The Markdown MIME type set for the MODX Content Type',
-            'namespace' => 'markdownextra',
+            'namespace' => 'markdown',
             'xtype' => 'textfield',
             'value' => 'text/markdown',
             'area' => 'System and Server',
         ),
-        'setting_markdownextra.mimeout' => array( // key
-            'key' => 'markdownextra.mimeout',
+        'setting_markdown.mimeout' => array( // key
+            'key' => 'markdown.mimeout',
             'name' => 'Output MIME Type',
             'description' => 'The MIME type to output for Markdown related documents.',
-            'namespace' => 'markdownextra',
+            'namespace' => 'markdown',
             'xtype' => 'textfield',
             'value' => 'text/html',
             'area' => 'System and Server',
@@ -102,10 +102,10 @@ $components = array(
     */
 
     'namespaces' => array(
-        'markdownextra' => array(
-            'name' => 'markdownextra',
-            'path' => '{core_path}components/markdownextra/',
-            'assets_path' => '{assets_path}components/markdownextra/',
+        'markdown' => array(
+            'name' => 'markdown',
+            'path' => '{core_path}components/markdown/',
+            'assets_path' => '{assets_path}components/markdown/',
         ),
 
     ),
@@ -136,8 +136,8 @@ $components = array(
     */
 
     'categories' => array(
-        'MarkdownExtra' => array(
-            'category' => 'MarkdownExtra',
+        'Markdown' => array(
+            'category' => 'Markdown',
         ),
     ),
 
@@ -178,25 +178,25 @@ $components = array(
         ),
 
         'snippets' => array(
-        	'MarkdownExtra' => array(
-                'category' => 'MarkdownExtra',
-                'description' => 'MarkdownExtra snippet and output filter.',
+        	'Markdown' => array(
+                'category' => 'Markdown',
+                'description' => 'Markdown snippet and output filter.',
                 'static' => true,
                 'propertySets' => array(
-                	'MarkdownExtra',
+                	'Markdown',
              ),
            ),
         ),
         'plugins' => array(
-            'MarkdownExtra' => array( /* markdownextra with static, events, and property sets */
-                'category' => 'MarkdownExtra',
-                'description' => 'MarkdownExtra Plugin',
+            'Markdown' => array( /* markdownextra with static, events, and property sets */
+                'category' => 'Markdown',
+                'description' => 'Markdown Plugin',
                 'static' => FALSE,
                 'propertySets' => array( /* all property sets to be connected to element */
                     //'PropertySet1',
                 ),
                 'events' => array(
-                    /* minimal markdownextra - no fields */
+                    /* minimal markdown - no fields */
                     'OnBeforeDocFormSave' => array(),
                     'OnDocFormRender' => array(),
                     'OnDocFormSave' => array(),
@@ -204,7 +204,7 @@ $components = array(
                     'OnLoadWebDocument' => array(),
                     
                     //'OnWebPagePrerender' => array(),
-                    /* markdownextra with fields set */
+                    /* markdown with fields set */
                    /* 'OnMyEvent1' => array(
                         'priority' => '0', 
                         'group' => 'plugins',
@@ -289,7 +289,7 @@ $components = array(
        if 'createCmpFiles is true, these will be ignored.
     */
     $jsFiles = array(
-        //'markdownextra.js',
+        //'markdown.js',
     ),
 
 
@@ -319,7 +319,7 @@ $components = array(
      * Suffix 'resolver.php' will be added automatically */
     'resolvers' => array(
         'default',
-        'markdownextra',
+        'markdown',
         //'addUsers'
     ),
 
@@ -372,8 +372,8 @@ $components = array(
      *
      * Set to array() if there are no classes. */
     'classes' => array(
-        'markdownextra' => 'markdownextra:markdownextra'
-        //'MarkdownExtra' => 'markdownextra:markdownextra',
+        'markdown' => 'markdown:markdown'
+        //'Markdown' => 'markdown:markdown',
     ),
 
     /* ************************************
@@ -434,7 +434,7 @@ $components = array(
        Format: directory:filename */
 
     'cmpJsFiles' => array(
-        /*':markdownextra.js',
+        /*':markdown.js',
         'sections:home.js',
         'widgets:home.panel.js',
         'widgets:snippet.grid.js',

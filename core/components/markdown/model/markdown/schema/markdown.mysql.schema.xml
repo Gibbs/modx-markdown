@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="markdown" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM" version="1.0">
+	<object class="modMarkdown" table="markdown_data" extends="xPDOSimpleObject">
+		<field key="document" dbtype="int" precision="1" attributes="unsigned" phptype="integer" null="false" default="0" />
+		<field key="content" dbtype="text" phptype="string" null="false" default=""/>
+	</object>
+</model>

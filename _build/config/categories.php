@@ -1,5 +1,5 @@
 <?php
 $cats = array (
-  0 => 'MarkdownExtra',
+  0 => 'Markdown',
 );
 return $cats;

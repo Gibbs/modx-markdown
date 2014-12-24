@@ -14,8 +14,8 @@ $modx->setLogTarget(XPDO_CLI_MODE ? 'ECHO' : 'HTML');
 $root = dirname(dirname(__FILE__)).'/';
 echo $root;
 $sources = array(
-	'model' => $root.'core/components/markdownextra/model/',
-	'schema_file' => $root.'core/components/markdownextra/model/markdownextra/schema/markdownextra.mysql.schema.xml',
+	'model' => $root.'core/components/markdown/model/',
+	'schema_file' => $root.'core/components/markdown/model/markdown/schema/markdown.mysql.schema.xml',
 );
 
 
