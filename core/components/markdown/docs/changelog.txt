@@ -1,6 +1,6 @@
 Changelog for Markdown
 ======================
 
-Markdown 1.0.0
+Markdown 1.0.1
 --------------
 - Initial Version

@@ -1,11 +1,11 @@
 Markdown Extra
 ==============
-Version: 1.0.0
-Authors:  Dan Gibbs <dan@goldcoastmedia.co.uk>
+Version: 1.0.1
+Authors: Dan Gibbs <dan@goldcoastmedia.co.uk>
 
 Write MODX documents in Markdown.
 
-Git repo: https://github.com/GoldCoastMedia/modx-markdown-extra
+Git repo: https://github.com/Gibbs/modx-markdown
 
 
 Documentation

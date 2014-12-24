@@ -65,7 +65,7 @@ if($modx->event->name == 'OnBeforeDocFormSave' AND $resource->contentType == $mi
 	require_once $modx->getOption('core_path') .
 		'components/markdown/vendor/autoload.php';
 
-	$markdown = new \Michelf\MarkdownExtra\MarkdownExtra();
+	$markdown = new \Michelf\MarkdownExtra();
 	$output = $markdown->transform($resource->getContent());
 
 	$resource->content = $output;

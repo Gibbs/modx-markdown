@@ -40,7 +40,7 @@ if( $content !== null) {
 	require_once $modx->getOption('core_path') . 
 		'components/markdown/vendor/autoload.php';
 	
-	$output = \Michelf\Markdown::Markdown::defaultTransform($content);
+	$output = \Michelf\MarkdownExtra::defaultTransform($content);
 }
 
 return $output;
