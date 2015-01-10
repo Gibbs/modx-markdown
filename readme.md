@@ -28,11 +28,11 @@ This allows MODX documents to work as normal even if the extension is disabled o
 
 To use chunks and snippets wrap them with a HTML element.
 
-~~~
+~~~html
 <span>[[$chunk]]</span>
 ~~~
 
-~~~
+~~~html
 <div>[[!MySnippet? &something=`something`]]</div>
 ~~~
 
@@ -40,7 +40,7 @@ To use chunks and snippets wrap them with a HTML element.
 
 The parser will ignore anything inside HTML tags. For example:
 
-~~~language-html
+~~~html
 **some** markdown
 
 <div id="something">
@@ -56,7 +56,7 @@ The parser will ignore anything inside HTML tags. For example:
 
 Markdown can be used inside HTML with the special ```markdown="1"``` attribute. Example:
 
-~~~language-html
+~~~html
 **some** markdown
 
 <div id="something">
