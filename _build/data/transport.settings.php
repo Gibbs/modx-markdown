@@ -33,12 +33,12 @@ $systemSettings[1]->fromArray(array (
   'namespace'   => 'markdown',
   'area'        => 'System and Server',
   'name'        => 'Output MIME Type',
-  'description' => 'The MIME type to output for Markdown related documents.',
+  'description' => 'The MIME type to output for Markdown documents.',
 ), '', true, true);
 $systemSettings[2] = $modx->newObject('modSystemSetting');
 $systemSettings[2]->fromArray(array (
   'key'        => 'markdown.mimemarkdown',
-  'value'       => 'text/markdown',
+  'value'       => 'text/x-markdown',
   'xtype'       => 'textfield',
   'namespace'   => 'markdown',
   'area'        => 'System and Server',
